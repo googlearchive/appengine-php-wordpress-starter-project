@@ -2,19 +2,18 @@
 
 For more detailed instructions, see [Running Wordpress](https://developers.google.com/appengine/articles/wordpress).
 
-1. Clone this git repo and its submodules by running the following commands:
-    
+Clone this git repo and its submodules by running the following commands:
+   
     git clone https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project.git
     cd appengine-php-wordpress-starter-project/
     git submodule init
     git submodule update
 
-2. Set up MySQL in your local development environment as necessary.
-Then, run databasesetup.sql locally to set up your local MySQL database, first changing the password inside that file.
+Set up MySQL in your local development environment as necessary. Then, run databasesetup.sql locally to set up your local MySQL database, first changing the password inside that file.
 
-3. Set up a Cloud SQL instance, as described [here](https://developers.google.com/appengine/articles/wordpress#cloudsql).
+Set up a Cloud SQL instance, as described [here](https://developers.google.com/appengine/articles/wordpress#cloudsql).
 
-4. Move wp-config.php from this directory into "wordpress/".  Edit it to reflect your database settings.  You'll need to edit the password, and your Cloud SQL instance name if it is not 'wordpress'. Then, in app.yaml and wp-config.php, change YOUR_PROJECT_ID to match the project ID you entered in the Cloud Console.
+Move wp-config.php from the home directory into "wordpress/".  Edit it to reflect your database settings.  You'll need to edit the password, and your Cloud SQL instance name if it is not 'wordpress'. Then, in app.yaml and wp-config.php, change YOUR_PROJECT_ID to match the project ID you entered in the Cloud Console.
 
 After doing these steps, you can run WordPress locally using dev_appserver, or deploy the application.
 
