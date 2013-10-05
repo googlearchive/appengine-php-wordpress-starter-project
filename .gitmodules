@@ -1,0 +1,6 @@
+[submodule "WordPress"]
+	path = WordPress
+	url = https://github.com/WordPress/WordPress.git
+[submodule "appengine-wordpress-plugin"]
+	path = appengine-wordpress-plugin
+	url = https://github.com/GoogleCloudPlatform/appengine-wordpress-plugin.git
