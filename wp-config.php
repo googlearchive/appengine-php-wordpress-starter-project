@@ -92,3 +92,9 @@
     
     /** Sets up WordPress vars and included files. */
     require_once(ABSPATH . 'wp-settings.php');
+
+    $batcache = [
+      'seconds'=>0,
+      'max_age'=>30*60, // 30 minutes
+      'debug'=>false
+    ];
