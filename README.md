@@ -9,7 +9,7 @@ For more detailed instructions, see [Running Wordpress](https://developers.googl
     git submodule init
     git submodule update
 
-2. Set up MySQL in your local development environment as necessary.  See [xxx] for more information.
+2. Set up MySQL in your local development environment as necessary.
 Then, run databasesetup.sql locally to set up your local MySQL database, first changing the password inside that file.
 
 3. Set up a Cloud SQL instance, as described [here](https://developers.google.com/appengine/articles/wordpress#cloudsql).
