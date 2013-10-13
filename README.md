@@ -1,5 +1,25 @@
 # WordPress on App Engine Starter Project
 
+This repo is designed to be as close as possible to  "clone and deploy" given that the Google App Engine
+team doesn't have a license to distribute WordPress, MySQL, or the 3rd party WordPress plugins we use here.
+However, through the use of submodules (which "include" other Git repos), we can at least get all the files on
+your machine at once. We have also pre-configured some files so you can just drag-and-drop them into place,
+and we've also automated the database setup process.
+
+But first, you'll need a couple pieces of software and an active Google Cloud Project.
+
+## Prerequisites
+
+1. Install the [PHP SDK for Google App Engine](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP)
+2. Install [MySQL](http://dev.mysql.com/downloads/)
+3. [Sign up](http://cloud.google.com/console) for a Google Cloud Platform project, and
+set up a Cloud SQL instance, as described [here](https://developers.google.com/cloud-sql/docs/instances). 
+
+**Note: You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here.
+Also, installing the PHP SDK for App Engine will prompt you to install Python 2.7 if you don't have it already.**
+
+## Cloning and setup
+
 Clone this git repo and its submodules by running the following commands:
    
     git clone https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project.git
@@ -7,22 +27,17 @@ Clone this git repo and its submodules by running the following commands:
     git submodule init
     git submodule update
 
-[Sign up](http://cloud.google.com/console) for a Google Cloud Platform project, and
-set up a Cloud SQL instance, as described [here](https://developers.google.com/cloud-sql/docs/instances).
+Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
+in the Cloud Console when you signed up for a Google Cloud Platform project.
 
-Edit `wp-config.php` and `app.yaml` to reflect your settings.
-You'll need to edit the password, and your Cloud SQL instance name if it is not `wordpress`. 
-You'll also need to change `YOUR_PROJECT_ID` to match the project ID you entered in the Cloud Console.
+When you're done, move `wp-config.php` into into `WordPress/`, replacing the file there.
 
-Move `wp-config.php` into into `WordPress/`, replacing the file there.
-
-You now need to run WordPress locally so you can install some important plugins. The workflow for using
-WordPress plugins with App Engine is to install them locally first, then re-deploy your app.
+You now need to run WordPress locally so you can install some important plugins. **The workflow for using
+WordPress plugins with App Engine is to install them locally first, then re-deploy your app.**
 
 ## Running WordPress locally
 
-Set up MySQL in your local development environment as necessary. 
-Then, run `databasesetup.sql` to set up your local MySQL database, first changing the password inside that file.
+Using MySQL, run `databasesetup.sql` to set up your local database, first changing the password inside that file.
 
 To run WordPress locally on Windows and OS X, you can use the 
 [Launcher](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP), 
