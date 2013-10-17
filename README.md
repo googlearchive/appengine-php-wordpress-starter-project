@@ -20,6 +20,8 @@ Also, installing the PHP SDK for App Engine will prompt you to install Python 2.
 
 ## Cloning and setup
 
+### Step 1: Clone
+
 Clone this git repo and its submodules by running the following commands:
    
     git clone https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project.git
@@ -27,10 +29,21 @@ Clone this git repo and its submodules by running the following commands:
     git submodule init
     git submodule update
 
-Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
-in the Cloud Console when you signed up for a Google Cloud Platform project.
+### Step 2: Edit the config files
 
-When you're done, move `wp-config.php` into into `WordPress/`, replacing the file there.
+1. Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
+in the Cloud Console when you signed up for a Google Cloud Platform project.
+2. (Optional) Edit the settings in `batcache/advanced-cache.php` if you want to tweak its performance.
+
+### Step 3: Move files into place:
+
+Because of GitHub and licensing limitations, we can't put these files in the right places for you, so
+you need to manually move some files around: 
+
+1. Move `wp-config.php` from root into `wordpress/`, replacing the file there.
+2. Move `batcache/advanced-cache.php` to `wordpress/wp-content/`
+3. Move `batcache/batcache.php` to `wordpress/wp-content/plugins/`
+4. Move `wp-memcache/object-cache.php` to `wordpress/wp-content/`
 
 You now need to run WordPress locally so you can install some important plugins. **The workflow for using
 WordPress plugins with App Engine is to install them locally first, then re-deploy your app.**
@@ -41,7 +54,9 @@ Using MySQL, run `databasesetup.sql` to set up your local database, first changi
 
 To run WordPress locally on Windows and OS X, you can use the 
 [Launcher](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP), 
-or you can run from the command line. The default is to use the PHP binaries bundled with the SDK:
+or you can run from the command line. 
+
+On Mac and Windows, the default is to use the PHP binaries bundled with the SDK:
 
     $ APP_ENGINE_SDK_PATH/dev_appserver.py path_to_this_directory
 
