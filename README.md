@@ -48,9 +48,9 @@ in the Cloud Console when you signed up for a Google Cloud Platform project.
 
 Because of GitHub and licensing limitations, we can't put these files in the right places for you. 
 
-Mac and Linux users can run this script to move all the files into place:
+Run this script to move all the files into place:
 
-    sh move_files_after_editing.sh
+    move_files_after_editing.sh
 
 This script: 
 
@@ -66,6 +66,11 @@ Using MySQL, run `databasesetup.sql` to set up your local database. For a defaul
 this would be: 
 
     mysql -u root < databasesetup.sql
+    
+But really, all it's doing is running this line -- the WordPress installation script will do the heavy lifting
+when it comes to setting up your database. 
+
+    CREATE DATABASE IF NOT EXISTS wordpress_db;
 
 To run WordPress locally on Windows and OS X, you can use the 
 [Launcher](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP) 
@@ -80,16 +85,29 @@ On Linux, or to use your own PHP binaries, use:
     $ APP_ENGINE_SDK_PATH/dev_appserver.py --php_executable_path=PHP_CGI_EXECUTABLE_PATH path_to_this_directory
     
 Now, with App Engine running locally, visit `http://localhost:8080/wp-admin/install.php` in your browser and run 
-the setup process, changing the port number from 8080 if you need to. You should be able to log in, and confirm that
-your app is ready to deploy. 
+the setup process, changing the port number from 8080 if you aren't using the default. 
+You should be able to log in, and confirm that your app is ready to deploy. 
 
 ### Deploy!
 
 If all looks good, you can upload your application using the Launcher or by using this command:
 
     $ APP_ENGINE_SDK_PATH/appcfg.py update APPLICATION_DIRECTORY
+    
+Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. The SDK includes
+a tool for doing just that:
 
-### Activate the plugins, configuring email, and hooking up WordPress to your Cloud Storage
+    google_sql.py <PROJECT_ID>:wordpress
+    
+This launches a browser window that authorizes the `google_sql.py` tool to connect to your Cloud SQL instance.
+After clicking **Accept**, you can return to the command prompt, which has entered into the SQL command tool
+and is now connected to your instance. Next to `sql>`, enter this command:
+
+    CREATE DATABASE IF NOT EXISTS wordpress_db;    
+    
+You should see that it inserted 1 row of data creating the database. You can now type `exit` -- we're done here.
+
+### Activating the plugins, configuring email, and hooking up WordPress to your Cloud Storage
 
 **The following steps should be performed on your hosted copy of WordPress on App Engine**
 
