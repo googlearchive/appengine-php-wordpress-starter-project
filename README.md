@@ -136,3 +136,12 @@ Congratulations! You should now have a blog that loads rapidly, caches elegantly
 sends email properly, and can support adding images and other media to blog posts! Most importantly, 
 it will take advantage of Google's incredibly powerful infrastructure and always scale gracefully to
 accomodate traffic that is hitting your blog.
+
+### Maintaining
+
+You'll want to keep your local copy of the application handy because that's how you install other plugins and update
+the ones that are packaged with this project. Due to the tight security of the
+App Engine sandbox, you can't directly write to files in the application area -- they're static. That's
+also why we hooked your uploads up to Cloud Storage. So, to install plugins, you log into the admin area
+of your local WordPress instance, install or update any plugins you want there, and
+redeploy. Then go into the admin area for your hosted WordPress instance to activate the plugins. 
