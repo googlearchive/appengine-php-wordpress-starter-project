@@ -60,9 +60,6 @@ This script:
 4. Moves `wp-memcache/object-cache.php` to `wordpress/wp-content/`
 5. Moves the contents of `appengine-wordpress-plugin/` to `wordpress/wp-content/plugins/`
 
-You now need to run WordPress locally so you can install some important plugins. **The workflow for using
-WordPress plugins with App Engine is to install them locally first, then re-deploy your app.**
-
 ## Running WordPress locally
 
 Using MySQL, run `databasesetup.sql` to set up your local database. For a default installation (no root password) 
@@ -83,80 +80,41 @@ On Linux, or to use your own PHP binaries, use:
     $ APP_ENGINE_SDK_PATH/dev_appserver.py --php_executable_path=PHP_CGI_EXECUTABLE_PATH path_to_this_directory
     
 Now, with App Engine running locally, visit `http://localhost:8080/wp-admin/install.php` in your browser and run 
-the setup process, changing the port number from 8080 if you need to.
-    
-### Installing Google App Engine for WordPress Plugin
-
-The Google App Engine for WordPress plugin extends WordPress to take advantage of several App Engine services,
-including using the Mail API to send e-mail notifications, and Google Cloud Storage to store and serve uploaded
-media such as images. There are several different ways to install plugins - in this step we're going to show just one.
-
-**The following steps should be performed on your local development copy of WordPress**
-
-*   In the Admin section of the WordPress installation in your local development environment, visit **Plugins > Add New > Search**
-*   Search for the plugin called **Google App Engine for Wordpress**. Once you've found it, choose **Install Now**.
-
-#### Installing the Memcached Object Cache Plugin
-
-This will speed up your WordPress installation by storing frequently accessed data in Memcache.
-This plugin automatically takes advantage of Google App Engine's Memcache service.
-
-**The following steps should be performed on your local development copy of WordPress**
-
-*   In the Admin section of the WordPress installation in your local development environment, visit **Plugins > Add New > Search**
-*   Search for the plugin called Memcached Object Cache. Once you've found it, choose **Install Now**
-
-In your local copy of this repo, find the file 
-`APPLICATION_DIRECTORY/wordpress/wp-content/plugins/memcached/object-cache.php` and copy it to `APPLICATION_DIRECTORY/wordpress/wp-content/object-cache.php`
-
-#### Installing the Batcache Plugin
-
-**The following steps should be performed on your local development copy of WordPress**
-
-*   Follow the Batcache [installation instructions](http://wordpress.org/plugins/batcache/installation) to install it on your local blog.
-    
-## Deploying WordPress
-
-To deploy your application live, you'll first need to set up your Cloud SQL instance's 
-database by [importing](https://developers.google.com/cloud-sql/docs/import_export)
-`databasesetup.sql` from this repo. 
-
-### Creating your Cloud Storage Bucket
-
-You will then need to create a Cloud Storage bucket that will be used by your WordPress blog to efficiently 
-store and serve the files that you upload to WordPress.
-
-To set this up, visit your project in the [Google Cloud Console](http://cloud.google.com/console). 
-Visit the **App Engine** section, which should take you to the App Engine dashboard for your App Engine app. 
-Visit the **Application Settings** section and make a note of the **Service Account Name**, which looks like an 
-e-mail address, e.g. `hello-php-gae@appspot.gserviceaccount.com`.
-
-Next, visit the **Cloud Storage** section of your Cloud Console project, and choose **New Bucket**. 
-Give the bucket a unique name. Then, check the box next to the  bucket name so that **Bucket Permissions**
-appears. Enther the **Service Account Name** that you noted above, and give it **Read/Write** permission.
+the setup process, changing the port number from 8080 if you need to. You should be able to log in, and confirm that
+your app is ready to deploy. 
 
 ### Deploy!
 
-Then you can upload your application using the Launcher or by using this command:
+If all looks good, you can upload your application using the Launcher or by using this command:
 
     $ APP_ENGINE_SDK_PATH/appcfg.py update APPLICATION_DIRECTORY
 
-### Enable the WordPress plugin for Google App Engine
+### Activate the plugins, configuring email, and hooking up WordPress to your Cloud Storage
 
 **The following steps should be performed on your hosted copy of WordPress on App Engine**
 
-Now, we just need to activate the Google App Engine for WordPress plugin and configure it. Log into the WordPress 
-administration section of your blog, and visit the Plugins section. Activate the **Google App Engine for Wordpress** 
-plugin.
+#### Activating the plugins
+
+Now, we just need to activate the plugins that were packaged with your app. Log into the WordPress 
+administration section of your blog at `http://<PROJECT_ID>.appspot.com/wp-admin`, and visit the 
+Plugins section. Click the links to activate **Batcache Manager** and **Google App Engine for WordPress**.
+
+#### Configuring email and hooking WordPress up to your Cloud Storage
 
 Now visit **Settings > App Engine**. Enable the App Engine mail service - this will use the App Engine Mail 
-API to send notifications from WordPress. Optionally, enter a valid e-mail address that mail should be sent f
-rom (if you leave this blank, the plugin will determine a default address to use). The address of the account 
-you used to the create the Cloud Console project should work. Under Upload Settings, put in the name of the 
-bucket you created above. Hit **Save Changes** to commit everything.
+API to send notifications from WordPress. Optionally, enter a valid e-mail address that mail should be sent
+from (if you leave this blank, the plugin will determine a default address to use). The address of the account 
+you used to the create the Cloud Console project should work.
+
+Stay on this page, because in order to be able to embed images and other multimedia in your WordPress content,
+you need to enter the name of the Cloud Storage bucket you created when going through all the Prequisites earlier
+under **Upload Settings**. 
+
+Hit **Save Changes** to commit everything.
 
 ## That's all! (PHEW)
 
-Congratulations! You should now have a blog that loads rapidly, can send mail, and can support 
-adding images and other media to blog posts! Most importantly, it will take advantage of Google's incredibly
-powerful infrastructure and always scale gracefully to accomodate traffic that is hitting your blog.
+Congratulations! You should now have a blog that loads rapidly, caches elegantly, 
+sends email properly, and can support adding images and other media to blog posts! Most importantly, 
+it will take advantage of Google's incredibly powerful infrastructure and always scale gracefully to
+accomodate traffic that is hitting your blog.
