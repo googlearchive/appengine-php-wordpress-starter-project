@@ -1,6 +1,6 @@
 # WordPress on App Engine Starter Project
 
-This repo is designed to be as close as possible to  "clone and deploy" given that the Google App Engine
+This repo is designed to be as close as possible to "clone and deploy" given that the Google App Engine
 team doesn't have a license to distribute WordPress, MySQL, or the 3rd party WordPress plugins we use here.
 However, through the use of submodules (which "include" other Git repos), we can at least get all the files on
 your machine at once. We have also pre-configured some files so you can just drag-and-drop them into place,
@@ -13,10 +13,15 @@ But first, you'll need a couple pieces of software and an active Google Cloud Pr
 1. Install the [PHP SDK for Google App Engine](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP)
 2. Install [MySQL](http://dev.mysql.com/downloads/)
 3. [Sign up](http://cloud.google.com/console) for a Google Cloud Platform project, and
-set up a Cloud SQL instance, as described [here](https://developers.google.com/cloud-sql/docs/instances). 
-
-**Note: You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here.
-Also, installing the PHP SDK for App Engine will prompt you to install Python 2.7 if you don't have it already.**
+set up a Cloud SQL instance, as described [here](https://developers.google.com/cloud-sql/docs/instances), and a 
+Cloud Storage bucket, as described [here](https://developers.google.com/storage/docs/signup). You'll want to name 
+your Cloud SQL instance "wordpress" to match the config files provided here.
+4. Visit your project in the
+[Google Cloud Console](http://cloud.google.com/console), going to the App Engine section's **Application Settings**
+area, and make a note of the **Service Account Name** for your application, which has an e-mail address 
+(e.g. `<PROJECT_ID>@appspot.gserviceaccount.com`). Then, visit the Cloud Storage section of your project,
+select the checkbox next to the bucket you created in step 3, click 
+**Bucket Permissions**, and add your Service Account Name as a **User** account that has **Writer** permission.
 
 ## Cloning and setup
 
@@ -28,33 +33,46 @@ Clone this git repo and its submodules by running the following commands:
     cd appengine-php-wordpress-starter-project/
     git submodule init
     git submodule update
+    
+You now have a copy of [WordPress](http://wordpress.org/), the 
+[App Engine plugin for WordPress](http://wordpress.org/plugins/google-app-engine/),
+[Batcache](http://wordpress.org/plugins/batcache/), and 
+[Memcached Object Cache](http://wordpress.org/plugins/memcached/).
 
 ### Step 2: Edit the config files
 
-1. Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
+Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
 in the Cloud Console when you signed up for a Google Cloud Platform project.
-2. (Optional) Edit the settings in `batcache/advanced-cache.php` if you want to tweak its performance.
 
 ### Step 3: Move files into place:
 
-Because of GitHub and licensing limitations, we can't put these files in the right places for you, so
-you need to manually move some files around: 
+Because of GitHub and licensing limitations, we can't put these files in the right places for you. 
 
-1. Move `wp-config.php` from root into `wordpress/`, replacing the file there.
-2. Move `batcache/advanced-cache.php` to `wordpress/wp-content/`
-3. Move `batcache/batcache.php` to `wordpress/wp-content/plugins/`
-4. Move `wp-memcache/object-cache.php` to `wordpress/wp-content/`
+Mac and Linux users can run this script to move all the files into place:
+
+    sh move_files_after_editing.sh
+
+This script: 
+
+1. Moves `wp-config.php` from root into `wordpress/`, replacing the file there.
+2. Moves `batcache/advanced-cache.php` to `wordpress/wp-content/`
+3. Moves `batcache/batcache.php` to `wordpress/wp-content/plugins/`
+4. Moves `wp-memcache/object-cache.php` to `wordpress/wp-content/`
+5. Moves the contents of `appengine-wordpress-plugin/` to `wordpress/wp-content/plugins/`
 
 You now need to run WordPress locally so you can install some important plugins. **The workflow for using
 WordPress plugins with App Engine is to install them locally first, then re-deploy your app.**
 
 ## Running WordPress locally
 
-Using MySQL, run `databasesetup.sql` to set up your local database, first changing the password inside that file.
+Using MySQL, run `databasesetup.sql` to set up your local database. For a default installation (no root password) 
+this would be: 
+
+    mysql -u root < databasesetup.sql
 
 To run WordPress locally on Windows and OS X, you can use the 
-[Launcher](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP), 
-or you can run from the command line. 
+[Launcher](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP) 
+by going to **File > Add Existing Project** or you can run one of the commands below. 
 
 On Mac and Windows, the default is to use the PHP binaries bundled with the SDK:
 
@@ -63,6 +81,9 @@ On Mac and Windows, the default is to use the PHP binaries bundled with the SDK:
 On Linux, or to use your own PHP binaries, use:
 
     $ APP_ENGINE_SDK_PATH/dev_appserver.py --php_executable_path=PHP_CGI_EXECUTABLE_PATH path_to_this_directory
+    
+Now, with App Engine running locally, visit `http://localhost:8080/wp-admin/install.php` in your browser and run 
+the setup process, changing the port number from 8080 if you need to.
     
 ### Installing Google App Engine for WordPress Plugin
 
