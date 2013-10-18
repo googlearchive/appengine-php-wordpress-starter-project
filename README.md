@@ -107,6 +107,10 @@ and is now connected to your instance. Next to `sql>`, enter this command:
     
 You should see that it inserted 1 row of data creating the database. You can now type `exit` -- we're done here.
 
+Now, just like you did when WordPress was running locally, you'll need to run the install script by visiting:
+
+    http://<PROJECT_ID>.appspot.com/wp-admin/install.php
+
 ### Activating the plugins, configuring email, and hooking up WordPress to your Cloud Storage
 
 **The following steps should be performed on your hosted copy of WordPress on App Engine**
