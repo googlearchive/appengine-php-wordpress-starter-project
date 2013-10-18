@@ -22,10 +22,10 @@
     define('DB_NAME', 'wordpress_db');
     
     /** MySQL database username */
-    define('DB_USER', 'wp_user');
+    define('DB_USER', 'root');
     
     /** MySQL database password */
-    define('DB_PASSWORD', 'wp_password');
+    define('DB_PASSWORD', '');
     
     /** MySQL hostname */
     if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
