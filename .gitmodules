@@ -4,9 +4,9 @@
 [submodule "batcache"]
 	path = batcache
 	url = https://github.com/Automattic/batcache.git
-[submodule "wp-memcache"]
-	path = wp-memcache
-	url = https://github.com/thenextweb/wp-memcache.git
 [submodule "wordpress"]
 	path = wordpress
 	url = https://github.com/WordPress/WordPress.git
+[submodule "wp-memcache"]
+	path = wp-memcache
+	url = https://github.com/jeremyfelt/Memcached-Object-Cache.git
