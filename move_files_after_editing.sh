@@ -10,3 +10,6 @@ cp -fr batcache/advanced-cache.php wordpress/wp-content/
 cp -fr batcache/batcache.php wordpress/wp-content/plugins/
 cp -fr wp-memcache/object-cache.php wordpress/wp-content/
 cp -fr appengine-wordpress-plugin/. wordpress/wp-content/plugins/
+rm -rf batcache/
+rm -rf wp-memcache/
+rm -rf appengine-wordpress-plugin/
