@@ -1,5 +1,5 @@
 application: YOUR_PROJECT_ID
-version: wp
+version: wpfromstarterproject
 runtime: php
 api_version: 1
 
