@@ -65,7 +65,7 @@ This script:
 Using MySQL, run `databasesetup.sql` to set up your local database. For a default installation (no root password) 
 this would be: 
 
-    mysql -u root < databasesetup.sql
+    /usr/local/mysql/bin/mysql -u root < databasesetup.sql
     
 But really, all it's doing is running this line -- the WordPress installation script will do the heavy lifting
 when it comes to setting up your database. 
