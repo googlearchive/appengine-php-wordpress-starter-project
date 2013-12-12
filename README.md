@@ -29,10 +29,8 @@ select the checkbox next to the bucket you created in step 3, click
 
 Clone this git repo and its submodules by running the following commands:
    
-    git clone https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project.git
+    git clone --recursive https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project.git
     cd appengine-php-wordpress-starter-project/
-    git submodule init
-    git submodule update
     
 You now have a copy of [WordPress](http://wordpress.org/), the 
 [App Engine plugin for WordPress](http://wordpress.org/plugins/google-app-engine/),
