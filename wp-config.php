@@ -13,33 +13,33 @@
      *
      * @package WordPress
      */
-    
+
     // Required for batcache use
     define('WP_CACHE', true);
-    
+
     // ** MySQL settings - You can get this info from your web host ** //
     /** The name of the database for WordPress */
     define('DB_NAME', 'wordpress_db');
-    
+
     /** MySQL database username */
     define('DB_USER', 'root');
-    
+
     /** MySQL database password */
     define('DB_PASSWORD', '');
-    
+
     /** MySQL hostname */
-    if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
+    if (isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
         define('DB_HOST', ':/cloudsql/YOUR_PROJECT_ID:wordpress');
-    }else{
-        define('DB_HOST', 'localhost');
+    } else {
+        define('DB_HOST', '127.0.0.1');
     }
-    
+
     /** Database Charset to use in creating database tables. */
     define('DB_CHARSET', 'utf8');
-    
+
     /** The Database Collate type. Don't change this if in doubt. */
     define('DB_COLLATE', '');
-    
+
     /**#@+
      * Authentication Unique Keys and Salts.
      *
@@ -57,9 +57,9 @@
     define('SECURE_AUTH_SALT', 'put your unique phrase here');
     define('LOGGED_IN_SALT',   'put your unique phrase here');
     define('NONCE_SALT',       'put your unique phrase here');
-    
+
     /**#@-*/
-    
+
     /**
      * WordPress Database Table prefix.
      *
@@ -67,7 +67,7 @@
      * prefix. Only numbers, letters, and underscores please!
      */
     $table_prefix  = 'wp_';
-    
+
     /**
      * WordPress Localized Language, defaults to English.
      *
@@ -77,7 +77,7 @@
      * language support.
      */
     define('WPLANG', '');
-    
+
     /**
      * For developers: WordPress debugging mode.
      *
@@ -86,13 +86,13 @@
      * in their development environments.
      */
     define('WP_DEBUG', false);
-    
+
     /* That's all, stop editing! Happy blogging. */
-    
+
     /** Absolute path to the WordPress directory. */
     if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/wordpress/');
-    
+
     /** Sets up WordPress vars and included files. */
     require_once(ABSPATH . 'wp-settings.php');
 
