@@ -19,8 +19,8 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages
-  cp -Rf $HOME/google-appengine-wordpress.tz google-appengine-wordpress-$TRAVIS_BUILD_NUMBER.tgz
-  cp -Rf $HOME/google-appengine-wordpress.tz google-appengine-wordpress-latest.tgz
+  cp -Rf $HOME/google-appengine-wordpress.tgz google-appengine-wordpress-$TRAVIS_BUILD_NUMBER.tgz
+  cp -Rf $HOME/google-appengine-wordpress.tgz google-appengine-wordpress-latest.tgz
 
   #add, commit and push files
   git add -f .
