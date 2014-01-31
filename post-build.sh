@@ -19,7 +19,9 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages
+  test -d "$TRAVIS_BUILD_NUMBER" || mkdir -p "$TRAVIS_BUILD_NUMBER"
   cp -Rf $HOME/wordpress/* $TRAVIS_BUILD_NUMBER
+  test -d latest || mkdir -p latest
   cp -Rf $HOME/wordpress/* latest
 
   #add, commit and push files
