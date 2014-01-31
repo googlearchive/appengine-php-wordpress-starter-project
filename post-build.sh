@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 # This is a post-build script used by Travis to push the compiled project to GitHub
 
-echo -e "Starting post build\n"
+echo "Starting post build, pull request status is '$TRAVIS_PULL_REQUEST'.\n"
 
-if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  echo -e "Starting to update gh-pages\n"
+if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+  echo "Starting to update gh-pages\n"
 
   #copy data we're interested in to other place
   cp -R wordpress $HOME/wordpress
@@ -28,4 +28,4 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git push -fq origin gh-pages > /dev/null
 fi
 
-echo -e "Post-build completed\n"
+echo "Post-build completed\n"
