@@ -8,5 +8,5 @@ env:
 before_script:
 - curl -s http://getcomposer.org/installer | php -- --quiet
 - php composer.phar install --dev
-script: /usr/bin/true
+script: ":"
 after_success: ./post-build.sh
