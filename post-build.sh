@@ -6,6 +6,13 @@ echo "Starting post build...\n"
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   echo "Starting to update gh-pages\n"
 
+  # clear out the junk we don't need
+  rm composer.lock
+  rm composer.phar
+  rm composer.json
+  rm post-build.sh
+  rm -Rf vendor
+
   #copy data we're interested in to other place
   tar czf $HOME/google-appengine-wordpress.tgz *
 

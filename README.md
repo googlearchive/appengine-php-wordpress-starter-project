@@ -1,13 +1,13 @@
 # WordPress on App Engine Starter Project
 
+[![Build Status](https://travis-ci.org/ajessup/appengine-php-wordpress-starter-project.png)](https://travis-ci.org/ajessup/appengine-php-wordpress-starter-project)
+
 This project provides a simple quickstart for setting up and optimizing Wordpress to run on Google App Engine. This includes:
 
 * Wordpress 3.8
 * The Google App Engine for Wordpress plugin
 * The Batcache and Memcached pluigns for improved performance
 * Boilderplate app.yaml and php.ini configuration files for App Engine
-
-The project uses Composer to install Wordpress and the dependent plugins
 
 ## Prerequisites
 
@@ -23,15 +23,17 @@ area, and make a note of the **Service Account Name** for your application, whic
 (e.g. `<PROJECT_ID>@appspot.gserviceaccount.com`). Then, visit the Cloud Storage section of your project,
 select the checkbox next to the bucket you created in step 3, click 
 **Bucket Permissions**, and add your Service Account Name as a **User** account that has **Writer** permission.
-5. Install [composer](https://getcomposer.org/download/)
+5. (optional) Install [composer](https://getcomposer.org/download/)
 
 ## Getting Started
 
-### Step 1: Run composer to bring in dependancies
+### (optional) Step 1: Run composer to bring in dependancies
+
+**If you're not familiar with git, GitHub, or composer, and just want to skip this step - you can just [download Wordpress for Google App Engine](https://github.com/ajessup/appengine-php-wordpress-starter-project/raw/gh-pages/google-appengine-wordpress-latest.tgz)**
 
 In the base directory of your clone of the respository, run
 
-  $ composer install
+    $ composer install
 
 This will install Wordpress and the necessary plugins
 
