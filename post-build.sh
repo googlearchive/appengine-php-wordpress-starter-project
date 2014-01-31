@@ -1,4 +1,4 @@
-#! /usr/bin/env sh
+#!/usr/bin/env sh
 # This is a post-build script used by Travis to push the compiled project to GitHub
 
 echo -e "Starting post build\n"
@@ -26,6 +26,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git add -f .
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
   git push -fq origin gh-pages > /dev/null
-
-  echo -e "Post-build completed\n"
 fi
+
+echo -e "Post-build completed\n"
