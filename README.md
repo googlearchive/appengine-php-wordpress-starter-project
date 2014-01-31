@@ -1,12 +1,13 @@
 # WordPress on App Engine Starter Project
 
-This repo is designed to be as close as possible to "clone and deploy" given that the Google App Engine
-team doesn't have a license to distribute WordPress, MySQL, or the 3rd party WordPress plugins we use here.
-However, through the use of submodules (which "include" other Git repos), we can at least get all the files on
-your machine at once. We have also pre-configured some files so you can just drag-and-drop them into place,
-and we've also automated the database setup process.
+This project provides a simple quickstart for setting up and optimizing Wordpress to run on Google App Engine. This includes:
 
-But first, you'll need a couple pieces of software and an active Google Cloud Project.
+* Wordpress 3.8
+* The Google App Engine for Wordpress plugin
+* The Batcache and Memcached pluigns for improved performance
+* Boilderplate app.yaml and php.ini configuration files for App Engine
+
+The project uses Composer to install Wordpress and the dependent plugins
 
 ## Prerequisites
 
@@ -22,41 +23,22 @@ area, and make a note of the **Service Account Name** for your application, whic
 (e.g. `<PROJECT_ID>@appspot.gserviceaccount.com`). Then, visit the Cloud Storage section of your project,
 select the checkbox next to the bucket you created in step 3, click 
 **Bucket Permissions**, and add your Service Account Name as a **User** account that has **Writer** permission.
+5. Install [composer](https://getcomposer.org/download/)
 
-## Cloning and setup
+## Getting Started
 
-### Step 1: Clone
+### Step 1: Run composer to bring in dependancies
 
-Clone this git repo and its submodules by running the following commands:
-   
-    git clone --recursive https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project.git
-    cd appengine-php-wordpress-starter-project/
-    
-You now have a copy of [WordPress](http://wordpress.org/), the 
-[App Engine plugin for WordPress](http://wordpress.org/plugins/google-app-engine/),
-[Batcache](http://wordpress.org/plugins/batcache/), and 
-[Memcached Object Cache](http://wordpress.org/plugins/memcached/).
+In the base directory of your clone of the respository, run
+
+  $ composer install
+
+This will install Wordpress and the necessary plugins
 
 ### Step 2: Edit the config files
 
 Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
 in the Cloud Console when you signed up for a Google Cloud Platform project.
-
-### Step 3: Move files into place:
-
-Because of GitHub and licensing limitations, we can't put these files in the right places for you. 
-
-Run this script to move all the files into place:
-
-    move_files_after_editing.sh
-
-This script: 
-
-1. Moves `wp-config.php` from root into `wordpress/`, replacing the file there.
-2. Moves `batcache/advanced-cache.php` to `wordpress/wp-content/`
-3. Moves `batcache/batcache.php` to `wordpress/wp-content/plugins/`
-4. Moves `wp-memcache/object-cache.php` to `wordpress/wp-content/`
-5. Moves the contents of `appengine-wordpress-plugin/` to `wordpress/wp-content/plugins/`
 
 ## Running WordPress locally
 
@@ -72,15 +54,9 @@ when it comes to setting up your database.
 
 To run WordPress locally on Windows and OS X, you can use the 
 [Launcher](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP) 
-by going to **File > Add Existing Project** or you can run one of the commands below. 
+by going to **File > Add Existing Project** or you can the following from the command line: 
 
-On Mac and Windows, the default is to use the PHP binaries bundled with the SDK:
-
-    $ APP_ENGINE_SDK_PATH/dev_appserver.py path_to_this_directory
-
-On Linux, or to use your own PHP binaries, use:
-
-    $ APP_ENGINE_SDK_PATH/dev_appserver.py --php_executable_path=PHP_CGI_EXECUTABLE_PATH path_to_this_directory
+    $ dev_appserver.py .
     
 Now, with App Engine running locally, visit `http://localhost:8080/wp-admin/install.php` in your browser and run 
 the setup process, changing the port number from 8080 if you aren't using the default. 
@@ -88,9 +64,9 @@ You should be able to log in, and confirm that your app is ready to deploy.
 
 ### Deploy!
 
-If all looks good, you can upload your application using the Launcher or by using this command:
+If all looks good, you can upload your application using the Launcher or by using this command from within the :
 
-    $ APP_ENGINE_SDK_PATH/appcfg.py update APPLICATION_DIRECTORY
+    $ appcfg.py update 
     
 Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. The SDK includes
 a tool for doing just that:
@@ -131,19 +107,3 @@ you need to enter the name of the Cloud Storage bucket you created when going th
 under **Upload Settings**. 
 
 Hit **Save Changes** to commit everything.
-
-## That's all! (PHEW)
-
-Congratulations! You should now have a blog that loads rapidly, caches elegantly, 
-sends email properly, and can support adding images and other media to blog posts! Most importantly, 
-it will take advantage of Google's incredibly powerful infrastructure and scale gracefully to
-accomodate traffic that is hitting your blog.
-
-### Maintaining
-
-You'll want to keep your local copy of the application handy because that's how you install other plugins and update
-the ones that are packaged with this project. Due to the tight security of the
-App Engine sandbox, you can't directly write to files in the application area -- they're static. That's
-also why we hooked your uploads up to Cloud Storage. So, to install plugins, you log into the admin area
-of your local WordPress instance, install or update any plugins you want there, and
-redeploy. Then go into the admin area for your hosted WordPress instance to activate the plugins. 
