@@ -1,4 +1,7 @@
+#! /usr/bin/env sh
 # This is a post-build script used by Travis to push the compiled project to GitHub
+
+echo -e "Starting post build\n"
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to update gh-pages\n"
@@ -12,7 +15,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git config --global user.name "Travis"
 
   #using token clone gh-pages branch
-  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/ajessup/appengine-php-wordpress-starter-project.git  gh-pages > /dev/null
+  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/ajessup/appengine-php-wordpress-starter-project.git gh-pages > /dev/null
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages
