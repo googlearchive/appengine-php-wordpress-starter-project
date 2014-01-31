@@ -46,9 +46,13 @@ in the Cloud Console when you signed up for a Google Cloud Platform project.
 
 Because of GitHub and licensing limitations, we can't put these files in the right places for you. 
 
-Run this script to move all the files into place:
+Mac/Linux users: run this script to move all the files into place:
 
     move_files_after_editing.sh
+    
+Windows users: run this script to move all the files into place:
+
+    move_files_after_editing.bat
 
 This script: 
 
