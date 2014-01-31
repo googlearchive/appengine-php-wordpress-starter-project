@@ -1,9 +1,11 @@
 language: php
-
 php:
-  - 5.4
-  - 5.5
-
+- 5.4
+- 5.5
 before_script:
-  - curl -s http://getcomposer.org/installer | php -- --quiet
-  - php composer.phar install --dev
+- curl -s http://getcomposer.org/installer | php -- --quiet
+- php composer.phar install --dev
+env:
+  global:
+    secure: GZfX8LF1r5d35aRVSIijGAuqL5j2uBnUA62oK5Awb0czGxlkWg3DsS5vsDdpWXcuW+FFl1DKVWltz9GorEwm2NXASeJupzdSsqHY95Kqw1rpzzgj6cTo2pyhoqNgzhrhoYg/5HpGdx09X43Klook359GGCFj18S/RTP5bWVK1Qo=
+after_success: ./post-build.sh
