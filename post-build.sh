@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 # This is a post-build script used by Travis to push the compiled project to GitHub
 
-echo "Starting post build, pull request status is '$TRAVIS_PULL_REQUEST'.\n"
+echo "Starting post build...\n"
 
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   echo "Starting to update gh-pages\n"
 
   #copy data we're interested in to other place
-  cp -R wordpress $HOME/wordpress
+  tar czf $HOME/google-appengine-wordpress.tgz *
 
   #go to home and setup git
   cd $HOME
@@ -19,10 +19,8 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages
-  test -d "$TRAVIS_BUILD_NUMBER" || mkdir -p "$TRAVIS_BUILD_NUMBER"
-  cp -Rf $HOME/wordpress/* $TRAVIS_BUILD_NUMBER
-  test -d latest || mkdir -p latest
-  cp -Rf $HOME/wordpress/* latest
+  cp -Rf $HOME/google-appengine-wordpress.tz google-appengine-wordpress-$TRAVIS_BUILD_NUMBER.tgz
+  cp -Rf $HOME/google-appengine-wordpress.tz google-appengine-wordpress-latest.tgz
 
   #add, commit and push files
   git add -f .
