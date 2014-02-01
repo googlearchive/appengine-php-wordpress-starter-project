@@ -1,4 +1,4 @@
-# WordPress on App Engine Starter Project
+# WordPress on Google App Engine
 
 [![Build Status](https://travis-ci.org/ajessup/appengine-php-wordpress-starter-project.png)](https://travis-ci.org/ajessup/appengine-php-wordpress-starter-project)
 
