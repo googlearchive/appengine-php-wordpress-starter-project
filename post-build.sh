@@ -6,6 +6,9 @@ echo "Starting post build...\n"
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   echo "Starting to update gh-pages\n"
 
+  # move the config file to where it should be
+  mv wp-config.php wordpress/wp-config.php
+
   # clear out the junk we don't need
   rm composer.lock
   rm composer.phar
@@ -14,7 +17,8 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   rm -Rf vendor
 
   #copy data we're interested in to other place
-  tar czf $HOME/google-appengine-wordpress.tgz *
+  tar cf $HOME/google-appengine-wordpress.tar *
+  tar cfz $HOME/google-appengine-wordpress.tgz *
 
   #go to home and setup git
   cd $HOME
@@ -26,7 +30,9 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages
+  cp -Rf $HOME/google-appengine-wordpress.tar google-appengine-wordpress-$TRAVIS_BUILD_NUMBER.tar
   cp -Rf $HOME/google-appengine-wordpress.tgz google-appengine-wordpress-$TRAVIS_BUILD_NUMBER.tgz
+  cp -Rf $HOME/google-appengine-wordpress.tar google-appengine-wordpress-latest.tar
   cp -Rf $HOME/google-appengine-wordpress.tgz google-appengine-wordpress-latest.tgz
 
   #add, commit and push files
