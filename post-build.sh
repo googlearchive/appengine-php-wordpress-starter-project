@@ -26,7 +26,7 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   git config --global user.name "Travis"
 
   #using token clone gh-pages branch
-  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/ajessup/appengine-php-wordpress-starter-project.git gh-pages > /dev/null
+  git clone --branch=gh-pages https://${GH_TOKEN}@github.com/ajessup/appengine-php-wordpress-starter-project.git gh-pages > /dev/null
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages
@@ -36,9 +36,9 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   cp -Rf $HOME/google-appengine-wordpress.tgz google-appengine-wordpress-latest.tgz
 
   #add, commit and push files
-  git add -f .
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
-  git push -fq origin gh-pages > /dev/null
+  git add -A .
+  git commit -m "Pushing build $TRAVIS_BUILD_NUMBER to gh-pages branch"
+  git push origin gh-pages > /dev/null
 fi
 
 echo "Post-build completed\n"
