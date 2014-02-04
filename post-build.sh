@@ -20,15 +20,15 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   tar cf $HOME/google-appengine-wordpress.tar *
   tar cfz $HOME/google-appengine-wordpress.tgz *
 
+  #decrypt and add the PK required to push to this project
+  openssl aes-256-cbc -d -a -in .travis/deploy_key.enc -pass env:KEY_SALT -out $HOME/deploy_key
+  chmod 0600 $HOME/deploy_key
+  ssh-add $HOME/deploy_key;
+
   #go to home and setup git
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
-
-  #decrypt and add the PK required to push to this repo
-  openssl aes-256-cbc -d -a -in .travis/deploy_key.enc -pass env:KEY_SALT -out $HOME/deploy_key
-  chmod 0600 $HOME/deploy_key
-  ssh-add $HOME/deploy_key;
 
   # clone the repo
   git clone --branch=gh-pages git@github.com:GoogleCloudPlatform/appengine-php-wordpress-starter-project.git gh-pages
