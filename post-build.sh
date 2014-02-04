@@ -21,11 +21,10 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   tar cfz $HOME/google-appengine-wordpress.tgz *
 
   #decrypt and add the PK required to push to this project
-  ssh-agent -s
+  eval "$(ssh-agent -s)"
   openssl aes-256-cbc -d -a -in .travis/deploy_key.enc -pass env:KEY_SALT -out $HOME/deploy_key
   chmod 0600 $HOME/deploy_key
   ssh-add $HOME/deploy_key
-  head -c 50 $HOME/deploy_key
 
   #go to home and setup git
   cd $HOME
