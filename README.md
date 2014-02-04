@@ -1,7 +1,7 @@
 # WordPress on Google App Engine
 A starter project for running WordPress on Google App Engine
 
-[![Build Status](https://travis-ci.org/GoogleCloudPlatform/appengine-php-wordpress-starter-project.png)](https://travis-ci.org/GoogleCloudPlatform/appengine-php-wordpress-starter-project)
+[![Build Status](https://travis-ci.org/GoogleCloudPlatform/appengine-php-wordpress-starter-project.png?branch=master)](https://travis-ci.org/GoogleCloudPlatform/appengine-php-wordpress-starter-project)
 
 This project provides a simple quickstart for Wordpress on Google App Engine. This includes:
 
