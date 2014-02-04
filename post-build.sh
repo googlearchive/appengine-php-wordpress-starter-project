@@ -26,6 +26,9 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   chmod 0600 $HOME/deploy_key
   ssh-add $HOME/deploy_key
 
+  #add github's keys to known_hosts
+  ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
   #go to home and setup git
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
