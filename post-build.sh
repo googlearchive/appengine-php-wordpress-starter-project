@@ -25,8 +25,13 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
 
-  #using token clone gh-pages branch
-  git clone --branch=gh-pages https://${GH_TOKEN}@github.com/ajessup/appengine-php-wordpress-starter-project.git gh-pages > /dev/null
+  #decrypt and add the PK required to push to this repo
+  openssl aes-256-cbc -d -a -in .travis/deploy_key.enc -pass env:KEY_SALT -out $HOME/deploy_key
+  chmod 0600 $HOME/deploy_key
+  ssh-add $HOME/deploy_key;
+
+  # clone the repo
+  git clone --branch=gh-pages git@github.com:GoogleCloudPlatform/appengine-php-wordpress-starter-project.git gh-pages
 
   #go into diractory and copy data we're interested in to that directory
   cd gh-pages

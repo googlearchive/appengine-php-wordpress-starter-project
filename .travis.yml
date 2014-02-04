@@ -4,9 +4,9 @@ php:
 - 5.5
 env:
   global:
-    secure: GZfX8LF1r5d35aRVSIijGAuqL5j2uBnUA62oK5Awb0czGxlkWg3DsS5vsDdpWXcuW+FFl1DKVWltz9GorEwm2NXASeJupzdSsqHY95Kqw1rpzzgj6cTo2pyhoqNgzhrhoYg/5HpGdx09X43Klook359GGCFj18S/RTP5bWVK1Qo=
+  - secure: dVSnSGNBj1sEoABlZTVAmIcx7OSQsG7TZ4PD6n+sl5JhOfMsayfs4WBLYF2WLAIzRnPYjzftE2qtPaaYeRmMICr5r+aa1h5hbsDrAwN7LTpHu19B1hxE3KJrmGirU0e/7WGIEGixJYpvl1RLXnw83qdG/Y/fUilMHbwMWXLy2ns=
 before_script:
 - curl -s http://getcomposer.org/installer | php -- --quiet
 - php composer.phar install --dev
-script: ":"
+script: ':'
 after_success: ./post-build.sh
