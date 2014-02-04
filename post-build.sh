@@ -21,6 +21,7 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   tar cfz $HOME/google-appengine-wordpress.tgz *
 
   #decrypt and add the PK required to push to this project
+  ssh-agent -s
   openssl aes-256-cbc -d -a -in .travis/deploy_key.enc -pass env:KEY_SALT -out $HOME/deploy_key
   chmod 0600 $HOME/deploy_key
   ssh-add $HOME/deploy_key;
@@ -44,6 +45,9 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   git add -A .
   git commit -m "Pushing build $TRAVIS_BUILD_NUMBER to gh-pages branch"
   git push origin gh-pages > /dev/null
+
+  #kill the ssh-agent process
+  ssh-agent -k
 fi
 
 echo "Post-build completed\n"
