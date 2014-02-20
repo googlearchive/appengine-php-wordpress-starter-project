@@ -30,8 +30,13 @@
     /** MySQL hostname */
     if (isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
         define('DB_HOST', ':/cloudsql/YOUR_PROJECT_ID:wordpress');
+        // To install and set up the db, visit
+        // http://<YOUR_PROJECT_ID>.appspot.com/wp-admin/install.php .
+        // Or, to install directly from the root URL, also define:
+        // define( 'WP_SITEURL', 'https://<YOUR_PROJECT_ID>.appspot.com/' );
     } else {
         define('DB_HOST', '127.0.0.1');
+        // define( 'WP_SITEURL', 'http://localhost:8080/');
     }
 
     /** Database Charset to use in creating database tables. */
