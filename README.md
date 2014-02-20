@@ -84,7 +84,7 @@ On Linux, or to use your own PHP binaries, use:
 
 Now, with App Engine running locally, visit `http://localhost:8080/wp-admin/install.php` in your browser and run
 the setup process, changing the port number from 8080 if you aren't using the default.
-Or, to install directly from the root URL, you will need to define the following in your `wp-config.php`:
+Or, to install directly from the local root URL, define `WP_SITEURL` in your `wp-config.php`, e.g.:
 
     define( 'WP_SITEURL', 'http://localhost:8080/');
 
@@ -113,7 +113,7 @@ Now, just like you did when WordPress was running locally, you'll need to run th
 
     http://<PROJECT_ID>.appspot.com/wp-admin/install.php
 
-Or, to install directly from the root URL, you will need to define the following in your `wp-config.php`:
+Or, to install directly from the root URL, you can define WP_SITEURL in your `wp-config.php`, e.g.:
 
     define( 'WP_SITEURL', 'http://<YOUR_PROJECT_ID>.appspot.com/');
 
