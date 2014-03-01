@@ -24,19 +24,17 @@
     /** MySQL database username */
     define('DB_USER', 'root');
 
-    /** MySQL database password */
-    define('DB_PASSWORD', '');
-
-    /** MySQL hostname */
     if (isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
-        define('DB_HOST', ':/cloudsql/YOUR_PROJECT_ID:wordpress');
-        // To install and set up the db, visit
-        // http://<YOUR_PROJECT_ID>.appspot.com/wp-admin/install.php .
-        // Or, to install directly from the root URL, also define:
-        // define( 'WP_SITEURL', 'https://<YOUR_PROJECT_ID>.appspot.com/' );
+	/** Live environment Cloud SQL login and SITE_URL info */
+        define('DB_HOST', ':/cloudsql/your-project-id:wordpress');
+	define('DB_USER', 'root');
+	define('DB_PASSWORD', '');
+	define('WP_SITEURL','https://your-project-id.appspot.com');
     } else {
+	/** Local environment MySQL login info */
         define('DB_HOST', '127.0.0.1');
-        // define( 'WP_SITEURL', 'http://localhost:8080/');
+	define('DB_USER', 'root');
+	define('DB_PASSWORD', 'password');
     }
 
     /** Database Charset to use in creating database tables. */
