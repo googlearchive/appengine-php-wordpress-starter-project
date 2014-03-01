@@ -92,27 +92,27 @@ You should be able to log in and see the dashboard for your WordPress site.</p>
 <pre><code>$ appcfg.py update APPLICATION_DIRECTORY</code></pre>
 
 <p>Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. The SDK includes
-a tool for doing just that:</p>
+a tool for doing just that, so run this from your App Engine SDK's directory:</p>
 
 <pre><code>google_sql.py &lt;PROJECT_ID&gt;:wordpress</code></pre>
 
 <p>This launches a browser window that authorizes the <code>google_sql.py</code> tool to connect to your Cloud SQL instance. After clicking <strong>Accept</strong>, you can return to the command prompt, which has entered into the SQL command tool and is now connected to your instance. Next to <code>sql&gt;</code>, enter this command:</p>
 
-<pre><code>CREATE DATABASE IF NOT EXISTS wordpress_db;</code></pre>
+<pre><code>create database wordpress_db;</code></pre>
 
 <p>You should see that it inserted 1 row of data creating the database. You can now type <code>exit</code> 
 -- we're done here.</p>
 
 <p>Now, just like you did when WordPress was running locally, you'll need to run the install script by visiting:</p>
 
-<pre><code>http://&lt;PROJECT_ID&gt;.appspot.com/wp-admin/install.php
-</code></pre>
+<pre><code>http://&lt;PROJECT_ID&gt;.appspot.com/wp-admin/install.php</code></pre>
 
 <h2><a name="plugins" class="anchor" href="#plugins"><span class="octicon octicon-link"></span></a>Activating the plugins</h2>
 
 <p>Log into the dashboard with the account information you entered when installing WordPress, and navigate to 
 <strong>Plugins</strong>. Click the <strong>Activate</strong> link for <strong>Google App Engine for WordPress</strong>,
-and <strong>Batcache Manager</strong>. Now your site is ready to rock!</p>
+and <strong>Batcache Manager</strong>. Then, click <b>Settings</b>, underneath <b>Google App Engine for WordPress</b>.
+On this page, enter the name of the bucket you created in prerequisites (step 4, remember?). Now your site is ready to rock!</p>
 
 <p><strong>Note</strong>: You'll want to keep that local copy of WordPress handy, because you'll need it to install
 custom themes and plugins. Because of the security sandbox, your live WordPress site can not write to the local files
