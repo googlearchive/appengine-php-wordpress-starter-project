@@ -23,8 +23,8 @@
         <p class="view"><a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project">View the Project on GitHub <small>GoogleCloudPlatform/appengine-php-wordpress-starter-project</small></a></p>
 
         <ul>
-          <li><a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project/blob/gh-pages/google-appengine-wordpress-latest.zip?raw=true">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project/blob/gh-pages/google-appengine-wordpress-latest.tar?raw=true">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project/blob/master/appengine-php-wordpress-starter-project%20(Windows).zip?raw=true">Download <strong>ZIP for Windows</strong></a></li>
+          <li><a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project/blob/master/appengine-php-wordpress-starter-project_build%20(Linux%2C%20Mac).zip?raw=true">Download <strong>Zip for Mac/Linux</strong></a></li>
           <li><a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
@@ -41,6 +41,13 @@
 <a href="http://cloud.google.com/console">Sign up</a> for a Google Cloud Platform project, and
 set up a Cloud SQL instance, as described <a href="https://developers.google.com/cloud-sql/docs/instances">here</a>. 
 You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here.</li>
+<li>Visit your project in the <a href="http://cloud.google.com/console">Google Cloud Console</a>, 
+going to the App Engine section's <b>Application Settings</b> area, and make a note of the 
+<b>Service Account Name</b> for your application, 
+which has an e-mail address (e.g. <code>&lt;PROJECT_ID&gt;@appspot.gserviceaccount.com</code>). 
+Then, visit the Cloud Storage section of your project, select the checkbox 
+next to the bucket you created in step 3, click <b>Bucket Permissions</b>, and add 
+your Service Account Name as a <b>User</b> account that has <b>Writer</b> permission.</li>
 </ol><h2>
 
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
@@ -54,13 +61,12 @@ in the Cloud Console when you signed up for a Google Cloud Platform project.</p>
 <span class="octicon octicon-link"></span></a>Running WordPress locally</h2>
 
 <p>Using MySQL, run <code>setup.sql</code> to set up your local database. 
-For a default installation (no root password) this would be:</p>
+Note that you will be prompted for your password and enter the MySQL shell after the fist command:</p>
 
-<pre><code>/usr/local/mysql/bin/mysql -u root &lt; setup.sql</code></pre>
-
-<p>But really, all it's doing is running this line -- the WordPress installation script will do the heavy lifting when it comes to setting up your database. </p>
-
-<pre><code>CREATE DATABASE IF NOT EXISTS wordpress_db;</code></pre>
+<pre><code>{PATH_TO_MYSQL_BIN}/mysql -u root -p
+  create database wordpress_db;
+  exit;
+</code></pre>
 
 <p>To run WordPress locally on Windows and OS X, you can use the 
 <a href="https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP">Launcher</a> 
