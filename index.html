@@ -60,7 +60,7 @@ in the Cloud Console when you signed up for a Google Cloud Platform project.</p>
 <a name="running-wordpress-locally" class="anchor" href="#running-wordpress-locally">
 <span class="octicon octicon-link"></span></a>Running WordPress locally</h2>
 
-<p>Using MySQL, run <code>setup.sql</code> to set up your local database. 
+<p>Using MySQL, run the following commands to set up your local database. 
 Note that you will be prompted for your password and enter the MySQL shell after the fist command:</p>
 
 <pre><code>{PATH_TO_MYSQL_BIN}/mysql -u root -p
@@ -77,6 +77,9 @@ can run one of the commands below. </p>
 
 <pre><code>$ dev_appserver.py path_to_this_directory
 </code></pre>
+
+<p>On Linux, you run the same command, only you provide an extra argument that points to the PHP CGI executable. For example:</p>
+<pre><code>$ dev_appserver.py --php_executable_path=~/php-5.4.25/installdir/bin/php-cgi path_to_this_directory</code></pre>
 
 <p>Now, with App Engine running locally, visit <code>http://localhost:8080/wp-admin/install.php</code>
 in your browser and run the setup process, changing the port number from 8080 if you aren't using the default.
