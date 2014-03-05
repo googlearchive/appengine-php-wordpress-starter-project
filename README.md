@@ -1,6 +1,6 @@
 # WordPress on App Engine Starter Project
 
-***Note: This repo is essentially the "source" of the starter projects, allowing you to browse our code, suggest changes, etc. We provide already-built-and-zipped starter projects for Windows, Mac, and Linux at [Quick Start WordPress for Google App Engine](http://googlecloudplatform.github.io/appengine-php-wordpress-starter-project/).***
+***Note: This repo is essentially the "source" of the starter projects, allowing you to browse our code, suggest changes, etc. We provide already-built-and-zipped WordPress projects for Windows, Mac, and Linux at [Quick Start WordPress for Google App Engine](http://googlecloudplatform.github.io/appengine-php-wordpress-starter-project/).***
 
 ## Prerequisites
 
