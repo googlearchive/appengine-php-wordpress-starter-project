@@ -1,12 +1,7 @@
 # WordPress on App Engine Starter Project
 
-This repo is designed to be as close as possible to "clone and deploy" given that the Google App Engine
-team doesn't have a license to distribute WordPress, MySQL, or the 3rd party WordPress plugins we use here.
-However, through the use of submodules (which "include" other Git repos), we can at least get all the files on
-your machine at once. We have also pre-configured some files so you can just drag-and-drop them into place,
-and we've also automated the database setup process.
-
-But first, you'll need a couple pieces of software and an active Google Cloud Project.
+***Note: This repo is for recreating the zip files that serve as the actual starter projects. If you're just looking
+to unzip a sample and get going, look at [Quick Start WordPress for Google App Engine](http://googlecloudplatform.github.io/appengine-php-wordpress-starter-project/).
 
 ## Prerequisites
 
