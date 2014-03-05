@@ -1,7 +1,7 @@
 # WordPress on App Engine Starter Project
 
 ***Note: This repo is for recreating the zip files that serve as the actual starter projects. If you're just looking
-to unzip a sample and get going, look at [Quick Start WordPress for Google App Engine](http://googlecloudplatform.github.io/appengine-php-wordpress-starter-project/).
+to unzip a sample and get going, look at [Quick Start WordPress for Google App Engine](http://googlecloudplatform.github.io/appengine-php-wordpress-starter-project/).***
 
 ## Prerequisites
 
