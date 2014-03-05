@@ -33,7 +33,7 @@
 <a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
 
 <ol>
-<li>Install the <a href="https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP">PHP SDK for Google App Engine</a>
+<li>Install the <a href="https://developers.google.com/appengine/docs/php/gettingstarted/installing">PHP SDK for Google App Engine</a>
 </li>
 <li>Install <a href="http://dev.mysql.com/downloads/">MySQL</a> (Community Server works fine)
 </li>
@@ -42,9 +42,9 @@
 set up a Cloud SQL instance, as described <a href="https://developers.google.com/cloud-sql/docs/instances">here</a>. 
 You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here. For best performance,
 set it to follow your App Engine application underneath the <strong>Location</strong> setting.</li>
-</ol><h2>
+</ol>
 
-<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
+<h2><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <p>Edit <code>app.yaml</code> and <code>wordpress/wp-config.php</code>, replacing any instance of 
 <code>your-project-id</code> to match the Project ID (not the name) you entered
@@ -108,7 +108,7 @@ a tool for doing just that, so run this from your App Engine SDK's directory:</p
 
 <h2><a name="plugins" class="anchor" href="#plugins"><span class="octicon octicon-link"></span></a>Activating the plugins</h2>
 
-<p>Log into the App Engine Admin Console at http://appengine.gooogle.com, and click your freshly-deployed WordPress
+<p>Log into the App Engine Admin Console at <a href="http://appengine.gooogle.com">http://appengine.gooogle.com</a>, and click your freshly-deployed WordPress
 project. Click <strong>Application Settings</strong> on the left nav, scroll to the bottom, and click the
 <strong>Create</strong> button underneath <strong>Cloud Integration</strong>. This makes sure you have a 
   Google Cloud Storage bucket active, enabling you to upload media from within WordPress.</p>
