@@ -88,12 +88,10 @@ You should be able to log in and see the dashboard for your WordPress site.</p>
 
 <pre><code>$ appcfg.py update APPLICATION_DIRECTORY</code></pre>
 
-<p>Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. The SDK includes
-a tool for doing just that, so run this from your App Engine SDK's directory:</p>
-
-<pre><code>google_sql.py &lt;PROJECT_ID&gt;:wordpress</code></pre>
-
-<p>This launches a browser window that authorizes the <code>google_sql.py</code> tool to connect to your Cloud SQL instance. After clicking <strong>Accept</strong>, you can return to the command prompt, which has entered into the SQL command tool and is now connected to your instance. Next to <code>sql&gt;</code>, enter this command:</p>
+<p>Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. Follow 
+<a href="https://developers.google.com/cloud-sql/docs/mysql-client">these directions for connecting to your
+  Cloud SQL instance using the MySQL client</a>, then run these commands:
+</p>
 
 <pre><code>create database wordpress_db;</code></pre>
 
