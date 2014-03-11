@@ -29,7 +29,6 @@
         define('DB_HOST', ':/cloudsql/your-project-id:wordpress');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', '');
-	define('WP_SITEURL','https://your-project-id.appspot.com');
     } else {
 	/** Local environment MySQL login info */
         define('DB_HOST', '127.0.0.1');
@@ -37,6 +36,16 @@
 	define('DB_PASSWORD', 'password');
     }
 
+    // Determine HTTP or HTTPS, then set WP_SITEURL and WP_HOME
+    if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)
+    {
+	$protocol_to_use = 'http://';
+    } else {
+        $protocol_to_use = 'https://';
+    }
+    define( 'WP_SITEURL', $protocol_to_use . $_SERVER['HTTP_HOST']);
+    define( 'WP_HOME', $protocol_to_use . $_SERVER['HTTP_HOST']);
+    
     /** Database Charset to use in creating database tables. */
     define('DB_CHARSET', 'utf8');
 
