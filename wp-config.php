@@ -25,27 +25,27 @@
     define('DB_USER', 'root');
 
     if (isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
-	/** Live environment Cloud SQL login and SITE_URL info */
+        /** Live environment Cloud SQL login and SITE_URL info */
         define('DB_HOST', ':/cloudsql/your-project-id:wordpress');
-	define('DB_USER', 'root');
-	define('DB_PASSWORD', '');
+        define('DB_USER', 'root');
+        define('DB_PASSWORD', '');
     } else {
-	/** Local environment MySQL login info */
+        /** Local environment MySQL login info */
         define('DB_HOST', '127.0.0.1');
-	define('DB_USER', 'root');
-	define('DB_PASSWORD', 'password');
+        define('DB_USER', 'root');
+        define('DB_PASSWORD', 'password');
     }
 
     // Determine HTTP or HTTPS, then set WP_SITEURL and WP_HOME
     if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)
     {
-	$protocol_to_use = 'https://';
+        $protocol_to_use = 'https://';
     } else {
         $protocol_to_use = 'http://';
     }
     define( 'WP_SITEURL', $protocol_to_use . $_SERVER['HTTP_HOST']);
     define( 'WP_HOME', $protocol_to_use . $_SERVER['HTTP_HOST']);
-    
+
     /** Database Charset to use in creating database tables. */
     define('DB_CHARSET', 'utf8');
 
@@ -103,7 +103,7 @@
 
     /** Absolute path to the WordPress directory. */
     if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/wordpress/');
+        define('ABSPATH', dirname(__FILE__) . '/wordpress/');
 
     /** Sets up WordPress vars and included files. */
     require_once(ABSPATH . 'wp-settings.php');

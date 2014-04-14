@@ -33,8 +33,9 @@ You now have a copy of [WordPress](http://wordpress.org/), the
 
 ### Step 2: Edit the config files
 
-Edit `wp-config.php` and `app.yaml`, replacing `YOUR_PROJECT_ID` to match the Project ID (not the name) you entered
-in the Cloud Console when you signed up for a Google Cloud Platform project.
+Edit `wp-config.php` and `app.yaml`, replacing `your-project-id` and `YOUR_PROJECT_ID` (respectively)
+to match the numeric Project ID (not the name) you entered in the Cloud Console when you signed up for a
+Google Cloud Platform project.
 
 ### Step 3: Move files into place:
 
@@ -57,7 +58,7 @@ This script:
 Using MySQL, run `databasesetup.sql` to set up your local database. For a default installation (no root password)
 this would be:
 
-    /usr/local/mysql/bin/mysql -u root < databasesetup.sql
+    mysql -u root < databasesetup.sql
 
 But really, all it's doing is running this line -- the WordPress installation script will do the heavy lifting
 when it comes to setting up your database.
