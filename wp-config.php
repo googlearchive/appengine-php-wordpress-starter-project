@@ -26,7 +26,7 @@
 
     if (isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
         /** Live environment Cloud SQL login and SITE_URL info */
-        define('DB_HOST', ':/cloudsql/YOUR_PROJECT_ID:wordpress');
+        define('DB_HOST', ':/cloudsql/your-project-id:wordpress');
         define('DB_USER', 'root');
         define('DB_PASSWORD', '');
     } else {
