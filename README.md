@@ -34,7 +34,7 @@ You now have a copy of [WordPress](http://wordpress.org/), the
 ### Step 2: Edit the config files
 
 Edit `wp-config.php` and `app.yaml`, replacing `your-project-id`
-to match the numeric Project ID (not the name) you entered in the Cloud Console when you signed up for a
+to match the Project ID (not the name) that was assigned to your
 Google Cloud Platform project.
 
 ### Step 3: Move files into place:
