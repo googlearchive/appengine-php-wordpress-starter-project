@@ -40,14 +40,17 @@
 </li>
 <li>Install <a href="http://dev.mysql.com/downloads/">MySQL server</a>
 </li>
-<li>
-<a href="http://cloud.google.com/console">Sign up</a> for a Google Cloud Platform project, and
-set up a Cloud SQL instance, as described <a href="https://developers.google.com/cloud-sql/docs/instances">here</a>. 
-You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here. For best performance,
-set it to follow your App Engine application underneath the <strong>Location</strong> setting.</li>
 </ol>
 
 <h2><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p><a href="http://cloud.google.com/console">Sign up</a> for a Google Cloud Platform project, and
+set up a Cloud SQL instance, as described <a href="https://developers.google.com/cloud-sql/docs/instances">here</a>. 
+You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here. For best performance,
+set it to follow your App Engine application underneath the <strong>Location</strong> setting. Lastly, when signing up,
+be sure to assign an IP address to your instance, and add <a href="https://www.google.com/#q=whats+my+ip">your IP
+address</a> to the list of Authorized IP Addresses, so you can connect to your Cloud SQL instance using 3rd-party
+tools, which we'll do later.</p>
 
 <p>Edit <code>app.yaml</code> and <code>wordpress/wp-config.php</code>, replacing any instance of 
 <code>your-project-id</code> to match the Project ID (not the name) you entered
@@ -91,15 +94,20 @@ You should be able to log in and see the dashboard for your WordPress site.</p>
 
 <pre><code>$ appcfg.py update APPLICATION_DIRECTORY</code></pre>
 
-<p>Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. Follow 
-<a href="https://developers.google.com/cloud-sql/docs/mysql-client">these directions for connecting to your
-  Cloud SQL instance using the MySQL client</a>, then run these commands:
+<p>Just like you had to do with the local database, you'll need to set up the Cloud SQL instance. So, fire up the
+MySQL client again to run the below commands. This is the step that made it necessary to assign an IP address to
+your Cloud SQL instance (<code>INSTANCE_IP</code> below), and authorizing
+<a href="https://www.google.com/#q=whats+my+ip">your IP address</a> during the <a href="#setup">Cloud SQL setup phase</a>.
 </p>
 
-<pre><code>create database wordpress_db;</code></pre>
+<pre><code>
+{PATH_TO_MYSQL_BIN}/mysql --host=INSTANCE_IP --user=root --password
+create database wordpress_db;
+exit;
+</code></pre>
 
-<p>You should see that it inserted 1 row of data creating the database. You can now type <code>exit</code> 
--- we're done here.</p>
+<p>You should see that it inserted 1 row of data creating the database -- and with that, you're done. If you ever need to
+run arbitrary SQL commands against your Cloud SQL instance in the future, now you know how!</p>
 
 <p>Now, just like you did when WordPress was running locally, you'll need to run the install script by visiting:</p>
 
