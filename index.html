@@ -44,7 +44,7 @@
 
 <h2><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
-<h3>Cloud SQL</h3>
+<h3>Creating and configuring your project</h3>
 <p><a href="http://cloud.google.com/console">Sign up</a> for a Google Cloud Platform project, and
 set up a Cloud SQL instance, as described <a href="https://developers.google.com/cloud-sql/docs/instances">here</a>. 
 You'll want to name your Cloud SQL instance "wordpress" to match the config files provided here. For best performance,
@@ -53,7 +53,7 @@ be sure to select <strong>Assign IP Address</strong>, and add <a href="https://w
 address</a> to the list of <strong>Authorized IP Addresses</strong>, so you can connect to your Cloud SQL instance using 3rd-party
 tools, which we'll do later.</p>
 
-<h3>Config files</h3>
+<h3>Editing your config files</h3>
 <p>Edit <code>app.yaml</code> and <code>wordpress/wp-config.php</code>, replacing any instance of 
 <code>your-project-id</code> to match the Project ID (not the name) you entered
 in the Cloud Console when you signed up for a Google Cloud Platform project.</p>
