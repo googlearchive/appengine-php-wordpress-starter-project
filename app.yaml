@@ -17,6 +17,7 @@ handlers:
 - url: /(.*\.(ico|jpg|png|gif))$
   static_files: wordpress/\1
   upload: wordpress/.*\.(ico|jpg|png|gif)$
+  application_readable: true
 
 - url: /wp-admin/(.+)
   script: wordpress/wp-admin/\1
