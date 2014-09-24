@@ -96,7 +96,13 @@
      * in their development environments.
      */
     define('WP_DEBUG', false);
-
+    
+    // configures batcache
+    $batcache = [
+      'seconds'=>0,
+      'max_age'=>30*60, // 30 minutes
+      'debug'=>false
+    ];
     /* That's all, stop editing! Happy blogging. */
 
     /** Absolute path to the WordPress directory. */
@@ -106,9 +112,4 @@
     /** Sets up WordPress vars and included files. */
     require_once(ABSPATH . 'wp-settings.php');
 
-   // configures batcache
-    $batcache = [
-      'seconds'=>0,
-      'max_age'=>30*60, // 30 minutes
-      'debug'=>false
-    ];
+
