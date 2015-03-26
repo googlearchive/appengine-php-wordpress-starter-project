@@ -97,6 +97,11 @@
      */
     define('WP_DEBUG', false);
     
+    /**
+     * Disable default wp-cron in favor of a real cron job
+     */
+    define('DISABLE_WP_CRON', true);
+    
     // configures batcache
     $batcache = [
       'seconds'=>0,
