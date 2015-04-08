@@ -63,6 +63,11 @@ in the Cloud Console when you signed up for a Google Cloud Platform project.</p>
 <a name="running-wordpress-locally" class="anchor" href="#running-wordpress-locally">
 <span class="octicon octicon-link"></span></a>Running WordPress locally</h2>
 
+<p>First, edit <a href="https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project/edit/master/wp-config.php">wp-config.php</a>
+  so that the local environment password for root is not literally the string "password" -- unless that's what you used
+  when setting up MySQL locally.
+</p>
+
 <p>Using MySQL, run the following commands to set up your local database. 
 Note that you will be prompted for your password and enter the MySQL shell after the fist command:</p>
 
