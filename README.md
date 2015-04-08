@@ -55,7 +55,11 @@ This script:
 
 ## Running WordPress locally
 
-Using MySQL, run `databasesetup.sql` to set up your local database. For a default installation (no root password)
+>First, edit [wp-config.php](https://github.com/GoogleCloudPlatform/appengine-php-wordpress-starter-project/edit/master/wp-config.php)
+  so that the local environment password for root is not literally the string "password" -- unless that's what you used
+  when setting up MySQL locally.
+
+Using MySQL's command line version, run `databasesetup.sql` to set up your local database. For a default installation (no root password)
 this would be:
 
     mysql -u root < databasesetup.sql
