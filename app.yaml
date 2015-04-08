@@ -19,6 +19,11 @@ handlers:
   upload: wordpress/.*\.(ico|jpg|jpeg|png|gif|woff|ttf|otf|eot|svg)$
   application_readable: true
 
+- url: /wp-includes/images/media/(.*\.(ico|jpg|jpeg|png|gif|woff|ttf|otf|eot|svg))$
+  static_files: wordpress/wp-includes/images/media/\1
+  upload: wordpress/wp-includes/images/media/.*\.(jpg|png|gif)$
+  application_readable: true
+
 - url: /wp-admin/(.+)
   script: wordpress/wp-admin/\1
   secure: always
