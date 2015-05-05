@@ -1,6 +1,6 @@
 application: your-project-id
 version: wpfromstarterproject
-runtime: php
+runtime: php55
 api_version: 1
 
 handlers:
