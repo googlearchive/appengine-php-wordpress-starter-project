@@ -7,7 +7,7 @@
 1. Install the [PHP SDK for Google App Engine](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_PHP)
 2. Install [MySQL](http://dev.mysql.com/downloads/)
 3. [Sign up](http://cloud.google.com/console) for a Google Cloud Platform project, and
-set up a Cloud SQL instance, as described [here](https://developers.google.com/cloud-sql/docs/instances), and a
+set up a Cloud SQL instance, as described [here](https://cloud.google.com/sql/docs/getting-started#create), and a
 Cloud Storage bucket, as described [here](https://developers.google.com/storage/docs/signup). You'll want to name
 your Cloud SQL instance "wordpress" to match the config files provided here. To keep costs down, we suggest signing up for a D0 instance with package billing. 
 4. Visit your project in the
