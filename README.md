@@ -1,3 +1,9 @@
+![status: inactive](https://img.shields.io/badge/status-inactive-red.svg)
+
+This project is no longer actively developed or maintained.
+
+For new work on this check out [A helper command for running WordPress on Google Cloud Platform](https://github.com/GoogleCloudPlatform/php-docs-samples/tree/master/appengine/wordpress)
+
 # WordPress on App Engine Starter Project
 
 ***Note: This repo is essentially the "source" of the starter projects, allowing you to browse our code, suggest changes, etc. We provide already-built-and-zipped WordPress projects for Windows, Mac, and Linux at [Quick Start WordPress for Google App Engine](http://googlecloudplatform.github.io/appengine-php-wordpress-starter-project/).***
